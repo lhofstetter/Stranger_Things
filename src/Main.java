@@ -26,7 +26,7 @@ public class Main {
                     System.out.println("Will you: 1. go to Will's house to look for him or 2. go home and ignore Mr.Clarke?");
                     Character.firstDecision();
                 } else {
-                     for (int i = 0; i < 40; i++) System.out.println();
+                     for (int i =    0; i < 40; i++) System.out.println();
                      list.add(mainCharacter.roomLabel());
                      list.add(mainCharacter.processMovement(move + " "));
                      System.out.println(list.get(list.size() - 2) + "\n" + list.get(list.size() - 1));
