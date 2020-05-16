@@ -1,9 +1,18 @@
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.*;
 
-public class Character extends Movement { //Character needs to extend Map, since a declared Character will be in a Map
+public class Character {
 	public static int level = 0;
 
+	private Point coordinate;
+
+	public Character (int row, int col) {
+		coordinate = new Point(row, col);
+	}
+
+/*
 
 	public void tutorial() {
 		try {
@@ -128,4 +137,23 @@ public class Character extends Movement { //Character needs to extend Map, since
 		}
 	}
 
+	private Point[] bodyCoords(Point headCoordinate) {
+	   int row = headCoordinate.getY();
+	   int col = headCoordinate.getX();
+
+	   Point rArm = new Point(col + 1, row + 1);
+	   Point lArm = new Point(col - 1, row + 1);
+	   Point rLeg = new Point(col + 1, row + 2);
+	   Point lLeg = new Point(col - 1, row + 2);
+	   Point body = new Point(col, row - 1);
+
+	   return new Point[] { rArm, lArm, rLeg, lLeg, body };
+	}
+
+
+*/
+
+
 }
+
+

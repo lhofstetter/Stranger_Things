@@ -1,19 +1,18 @@
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 
 public class InteractiveObject {
    String objectDisplay;
-   String typeOfObject;
+   String nameOfObject;
    int y1, x1, y2, x2, area;
 
-   /*
-   constructor for Interactive Object, designed to offload some of the code in Map and simplify
-   adding an object to the display.
+   /**
+    * constructor for Interactive Object, designed to offload some of the code in Map and simplify
+    * adding an object to the display.
     */
-   public InteractiveObject (String objectDisplay, String typeOfObject, int[] bounds) {
+
+   public InteractiveObject (String objectDisplay, String nameOfObject, int[] bounds) {
       this.objectDisplay = objectDisplay;
-      this.typeOfObject = typeOfObject;
+      this.nameOfObject = nameOfObject;
       this.y1 = bounds[0];
       this.x1 = bounds[1];
       this.y2 = bounds[2];
@@ -21,7 +20,9 @@ public class InteractiveObject {
       this.area = bounds[4];
    }
 
-   //returns an array of object's basic data, mainly for entering into map and such
+   /**
+    * returns an array of object's basic data, mainly for entering into map and such
+    */
    public int[] getLocationData() {
       return new int[] { y1, x1, y2, x2, area };
    }

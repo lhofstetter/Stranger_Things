@@ -1,3 +1,14 @@
+/**
+ * @deprecated
+ * This class controls the movement of the character and performs checks to ensure
+ * no overlapping between the character and map "objects".
+ * This class is being replaced by the Map, Game,
+ * Interactive Object and the Character classes.
+ */
+
+
+/*
+
 public class Movement extends Map {
 
 	public static String[][] tracked = new String[20][25];
@@ -294,3 +305,4 @@ public class Movement extends Map {
 
 
 }
+*/

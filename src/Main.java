@@ -1,41 +1,40 @@
-import java.io.*;
-import java.util.ArrayList;
-
+import java.util.Scanner;
 
 public class Main {
+    public static void main(String[] args) {
+        Scanner user = new Scanner(System.in);
+        String input = "";
 
-    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    public static String move;
-    public static ArrayList<String> list = new ArrayList<>();
-
-    public static void main(String[] args) throws IOException {
-        Character tutorial = new Character();
-        Character mainCharacter = new Character();
+        System.out.print("Enter your username:");
+        input = user.nextLine();
 
         try {
-            tutorial.tutorial();
+            String[] cmd = {"/bin/sh", "-c", "stty raw </dev/tty"};
+            Runtime.getRuntime().exec(cmd).waitFor();
+            //DO NOT DELETE THIS, TAKES INPUT WITHOUT HITTING ENTER!!!
+
+            Game g = new Game(input);
+
+            while (!input.equals("q")) {
+                if (System.in.available() > 0)
+                    input = (char)System.in.read() + "";
+                if (input.equals("w") || input.equals("s") || input.equals("d") || input.equals("a")) {
+                    System.out.println(input);
+                    input = "";
+                    format();
+                }
+            }
+            
         } catch (Exception e) {
             System.out.println(e);
-        } finally {
-            System.out.println(mainCharacter.displayMap());
-            for (int i = 0; i < 10; i++) System.out.println();
-            move = br.readLine();
-
-            while (!(move.contains("quit"))) {
-                 if (Character.level == 2) {
-                    System.out.println("Will you: 1. go to Will's house to look for him or 2. go home and ignore Mr.Clarke?");
-                    Character.firstDecision();
-                } else {
-                     for (int i =    0; i < 40; i++) System.out.println();
-                     list.add(mainCharacter.roomLabel());
-                     list.add(mainCharacter.processMovement(move + " "));
-                     System.out.println(list.get(list.size() - 2) + "\n" + list.get(list.size() - 1));
-                     for (int i = 0; i < 15; i++) System.out.println();
-                 }
-                move = br.readLine();
-            }
-
-            br.close();
         }
     }
+
+    private static void format () {
+        for (int i = 0; i < 50; i++)
+            System.out.print("\b");
+    }
 }
+
+
+
