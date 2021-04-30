@@ -1,0 +1,6 @@
+Welcome to Stranger Things: Will's Disappearance.
+It is highly recommended that you watch Stranger Things before playing this game.
+With that out of the way, let's introduce you to the game.
+${PM}
+This is you. Around you is the current room you are in (the TUTORIAL room).
+Let's try moving around a little bit. Use W-A-S-D and then hit enter (after each key is entered) to move around. Type 'exit' to leave the movement tutorial.

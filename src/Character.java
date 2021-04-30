@@ -1,15 +1,49 @@
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.*;
+import java.util.HashMap;
 
 public class Character {
-	public static int level = 0;
+	private Point lockCoordinate;
+	private String name;
 
-	private Point coordinate;
+   private int level = 0;
 
-	public Character (int row, int col) {
-		coordinate = new Point(row, col);
+
+   public Character (int row, int col) {
+		lockCoordinate = new Point(row, col);
+	}
+
+	public void setLevel (int level) {
+      	this.level = level;
+	}
+
+	public int getLevel () {
+      	return level;
+	}
+
+	public void setName (String name) {
+      	this.name = name;
+	}
+
+	public String getName () {
+      	return name;
+	}
+
+	private HashMap<String,Integer[]> updatePoints () {
+	   HashMap<String, Integer[]> coordinates = new HashMap<String, Integer[]>();
+
+	   Integer[] headCoor = { lockCoordinate.getX(), lockCoordinate.getY() };
+	   coordinates.put("head", headCoor);
+
+	   Integer[] rArmCoor = { coordinates.get("head")[0] + 1, coordinates.get("head")[1] - 1};
+	   Integer[] lArmCoor = { coordinates.get("head")[0] - 1, coordinates.get("head")[1] - 1};
+	   Integer[] lLegCoor = { coordinates.get("head")[0] - 1, coordinates.get("head")[1] - 2};
+	   Integer[] rLegCoor = { coordinates.get("head")[0] + 1, coordinates.get("head")[1] - 2};
+
+	   coordinates.put("left_arm", lArmCoor);
+	   coordinates.put("right_arm", rArmCoor);
+	   coordinates.put("left_leg", lLegCoor);
+	   coordinates.put("right_leg", rLegCoor);
+
+	   return coordinates;
 	}
 
 /*

@@ -1,7 +1,5 @@
 public class Map {
-    int level;
-    public static String[][][] mapData = new String[20][25][2];
-    String currentMap;
+    private String[][][] mapData = new String[20][25][2];
 
     int height = mapData[0].length;
     int length = mapData.length;
@@ -12,38 +10,10 @@ public class Map {
      * Assembles the "map" (or level) for the user by adding each character to the mapData[][][]
      * array. Uses 3rd dimension to distinguish the actual map "layer" from the "character layer".
      **/
-    /*
-    public void renderMap () {
-            String map = labelLayer() + "\n";
+    public void renderMap (String unrenderedMap) {
 
-            for (int i = 1; i <= height; i++) {
-                for (int x = 1; x <= length; x++) {
-                    mapData[i][x][2] = " ";
-                }
-            }
-
-            for (int i = 1; i < height; i++) {
-                mapData[i][0][2] = "|";
-                mapData[i][length - 1][2] = "|";
-            }
-
-            for (int i = 0; i < length; i++) {
-                mapData[0][i][2] = "_";
-                mapData[height - 1][i][2] = "_";
-            }
-
-            detailLayer(labelLayer());
-
-            for (int i = 0; i < height; i++) {
-                for (int x = 0; x < length; x++) {
-                    map += mapData[i][x][2];
-                }
-                map += "\n";
-            }
-
-            currentMap = map;
     }
-
+/*
 
 
     public String labelLayer () {

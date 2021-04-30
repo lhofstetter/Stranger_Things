@@ -1,16 +1,25 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.LinkedList;
 
 public class InteractiveObject {
-   String objectDisplay;
+   File objectDisplay;
    String nameOfObject;
    int y1, x1, y2, x2, area;
 
-   /**
-    * constructor for Interactive Object, designed to offload some of the code in Map and simplify
-    * adding an object to the display.
-    */
 
-   public InteractiveObject (String objectDisplay, String nameOfObject, int[] bounds) {
+   /**
+    * constructor for objects on the "map", allows easier access to creating an object
+    * without having to manually create the area it occupies and which portions of the display
+    * the character can't move into now that it's there. Actual objects are stored in the
+    * interactive text directory.
+    *
+    * @param objectDisplay .txt file to be converted to an object on ASCII map
+    * @param nameOfObject title of object for files/user interaction
+    * @param bounds limits on map to interact with - takes in y1, x1, y2, x2, area array of integers
+    */
+   public InteractiveObject (File objectDisplay, String nameOfObject, int[] bounds) {
       this.objectDisplay = objectDisplay;
       this.nameOfObject = nameOfObject;
       this.y1 = bounds[0];
@@ -34,10 +43,12 @@ public class InteractiveObject {
       int colCount = 0;
       int begIndex = 0;
 
-      for (int i = 0; i < objectDisplay.length(); i++) {
-         if (objectDisplay.charAt(i) == '\n') {
-            colCount += objectDisplay.substring(begIndex, i).length();
-            newLineArray.add(0, objectDisplay.substring(begIndex, i));
+      String objectDisplayStr = parseObjectFile(objectDisplay);
+
+      for (int i = 0; i < objectDisplayStr.length(); i++) {
+         if (objectDisplayStr.charAt(i) == '\n') {
+            colCount += objectDisplayStr.substring(begIndex, i).length();
+            newLineArray.add(0, objectDisplayStr.substring(begIndex, i));
             begIndex = i;
 		 }
 	  }
@@ -51,6 +62,24 @@ public class InteractiveObject {
       }
 
       return indivStrArray;
+   }
+
+   private String parseObjectFile (File f) {
+      String convFile = "";
+
+      try {
+         FileReader fr = new FileReader(f);
+
+         for (int i = fr.read(); i != -1;) {
+            convFile += ((char)i) + "";
+         }
+
+      } catch (Exception e) {
+         System.out.println("Error in reading object file. Please confirm that all object " +
+            ".txt files were downloaded successfully.");
+      }
+
+      return convFile;
    }
 
 
